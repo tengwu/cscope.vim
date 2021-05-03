@@ -61,7 +61,7 @@ if !exists('g:cscope_interested_files')
   let g:cscope_interested_files = join(map(files, 'v:val."$"'), '\|')
 endif
 
-let s:cscope_vim_dir = substitute($HOME,'\\','/','g')."/.cscope.vim"
+let s:cscope_vim_dir = substitute($HOME,'\\','/','g')."/.vim/plugged/cscope.vim/.cscope.vim"
 let s:index_file = s:cscope_vim_dir.'/index'
 
 function! s:GetBestPath(dir)
