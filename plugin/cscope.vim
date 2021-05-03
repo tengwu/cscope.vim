@@ -42,8 +42,8 @@ function! ToggleLocationList()
       echohl WarningMsg | echo "No location list." | echohl None
     endif
   elseif g:cscope_back_to_ori_window
-    let cmd = 'exe '.l:own.' . "wincmd w"'
-    exec cmd
+    let l:cmd = 'exe '.l:own.' . "wincmd w"'
+    exec l:cmd
   endif
 endfunction
 
@@ -313,6 +313,7 @@ function! s:preloadDB()
 endfunction
 
 function! CscopeFind(action, word)
+  let l:own = winnr()
   let dirtyDirs = []
   for d in keys(s:dbs)
     if s:dbs[d]['dirty'] == 1
@@ -332,6 +333,11 @@ function! CscopeFind(action, word)
     catch
       echohl WarningMsg | echo 'Can not find '.a:word.' with querytype as '.a:action.'.' | echohl None
     endtry
+  endif
+  let l:cwn = winnr()
+  if(l:own != l:cwn)
+    let l:cmd = 'exe '.l:own.' . "wincmd w"'
+    exec l:cmd
   endif
 endfunction
 
