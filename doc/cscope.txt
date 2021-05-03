@@ -152,4 +152,8 @@ example:
 Preload path settings help you to load some common libraries by default. For example,
     let g:cscope_preload_path="/usr/include/c++/;/works/phplib/trunk/php"
 
+                                                                *'g:cscope_back_to_ori_window'*
+Use this option to stop back to origin window after opening location window.
+    let g:cscope_back_to_ori_window=0
+
 " vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=help norl:

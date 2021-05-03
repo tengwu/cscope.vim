@@ -19,6 +19,10 @@ if !exists('g:cscope_split_threshold')
   let g:cscope_split_threshold = 10000
 endif
 
+if !exists('g:cscope_back_to_ori_window')
+  let g:cscope_back_to_ori_window = 1
+endif
+
 function! s:echo(msg)
   if g:cscope_silent == 0
     echo a:msg
@@ -37,6 +41,9 @@ function! ToggleLocationList()
     else
       echohl WarningMsg | echo "No location list." | echohl None
     endif
+  elseif g:cscope_back_to_ori_window
+    let cmd = 'exe '.l:own.' . "wincmd w"'
+    exec cmd
   endif
 endfunction
 
